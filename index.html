@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Result Application</title>
+	<link rel="stylesheet" type="text/css" href="styles/animate.css">
+	<link rel="stylesheet" type="text/css" href="styles/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="styles/style.css">
+	<link rel="stylesheet" type="text/css" href="styles/loading-bar.min.css" media="all">
+	<link rel="stylesheet" type="text/css" href="styles/angular-chart.css">
+
+</head>
+<body ng-app="resultApp" class="container">
+
+	<header>
+		<nav class="nav navbar-default">
+			<ul class="nav navbar-nav">
+				<li><a href="#/">Search Roll</a></li>
+				<li><a href="#/namesearch">Search Name</a></li>
+				<li><a href="#/ranklist">Rank List</a></li>
+			</ul>
+		</nav>
+	</header>
+
+	<main>
+		<div ng-view class="slide-animation">
+		</div>
+	</main>
+
+	<script src="scripts/angular.js"></script>
+	<script src="scripts/angular-animate.js"></script>
+	<script src="scripts/angular-route.js"></script>
+	<script src="app/app.js"></script>
+	<script src="app/controllers/searchRollCtrl.js"></script>
+	<script src="app/controllers/semesterCtrl.js"></script>
+	<script src="app/controllers/ranklistCtrl.js"></script>
+	<script src="app/controllers/nameSearchCtrl.js"></script>
+	<script src="app/services/resultService.js"></script>
+	<script type="text/javascript" src="scripts/loading-bar.min.js"></script>
+	<script src="scripts/Chart.js"></script>
+	<script src="scripts/angular-chart.js"></script>
+	<script src="scripts/jquery-1.12.4.min.js"></script>
+	<script src="scripts/bootstrap.min.js"></script>
+
+</body>
+</html>

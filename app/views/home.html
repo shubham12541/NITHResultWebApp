@@ -1,0 +1,53 @@
+<div>
+	<br>
+	<form ng-submit="search.search()">
+		<div ng-class="search.class">
+			<!-- <label>Roll No.</label> -->
+			<input type="text" placeholder="Roll No." class="form-control" ng-model="search.roll">
+		</div>
+		<div class="alert alert-danger" ng-if="search.error">
+			{{search.error}}
+		</div>
+		<!-- <button type="submit" class="btn btn-block btn-primary">
+			<span ng-if="!search.processing">Search</span>
+			<span ng-if="search.processing" class="spinner"><span class="glyphicon glyphicon-repeat"></span></span></a>
+		</button>
+ --></form>
+
+ 	<br>
+
+ 	<div ng-if="search.result" class="graph-container">
+		<canvas id="line" height="100" class="chart chart-line" chart-data="search.data"
+		  chart-labels="search.labels" chart-legend="true" chart-series="search.series"
+		  chart-click="search.onClick" >
+		</canvas> 
+	</div>
+
+	<br>
+
+ 	<div ng-if="search.result">
+		<h2>{{ search.result[0].name | uppercase }}</h2>
+		<h2>Year Rank: {{ search.result[0].year_rank }}</h2>
+		<h2>College Rank: {{ search.result[0].college_rank }}</h2>
+		<br>
+		<br>
+		<table class="table table-striped">
+			<tr>
+				<th ng-click="search.doSort('sem')">Semester</th>
+				<th ng-click="search.doSort('sgpi')">SGPI</th>
+				<th ng-click="search.doSort('cgpi')">CGPI</th>
+			</tr>
+			<tr ng-repeat="sem in search.result | orderBy:search.sort:search.reverse">
+				<td ng-click="search.semClick(search.result[0].name, search.roll, $index+1)">{{ search.getSem(sem) }}</td>
+				<td>{{ sem.sgpi }}</td>
+				<td>{{ sem.cgpi }}</td>
+			</tr>
+		</table>
+		<br>
+		<br>
+	</div>
+	
+</div>
+
+<br>
+<br>

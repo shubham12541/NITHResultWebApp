@@ -1,0 +1,71 @@
+<div>
+	<br>
+	<form ng-submit="rank.generateList()" class="row col-sm-6 col-sm-offset-3">
+		<select class="form-control" ng-model="rank.year">
+			<option>First Year</option>
+			<option>Second Year</option>
+			<option>Third Year</option>
+			<option>Final Year</option>
+		</select>
+		<br>
+		<select class="form-control" ng-model="rank.branch">
+			<option>Civil</option>
+			<option>Electrical</option>
+			<option>Mechanical</option>
+			<option>Electronics</option>
+			<option>Computer Science</option>
+			<option>Architecture</option>
+			<option>Chemical</option>
+		</select>
+		<br>
+		<select class="form-control" ng-model="rank.order">
+			<option>Rank</option>
+			<option>Roll No</option>
+		</select>
+		<br>
+		<button class="form-control btn btn-primary" action="submit">
+			Submit
+		</button>
+
+		<br>
+		<div class="alert alert-danger" ng-if="rank.error">
+			{{rank.error}}
+		</div>
+
+	</form>
+
+	<br>
+
+	<div ng-if="rank.list">
+		<canvas id="line" class="chart chart-line" chart-data="rank.data"
+		  chart-labels="rank.labels" chart-legend="true" chart-series="rank.series"
+		  chart-click="rank.onClick" >
+		</canvas> 
+	</div>
+
+	<br>
+
+	<div ng-if="rank.list">
+
+		<table class="table table-striped">
+			<tr>
+				<th ng-click="rank.doSort('roll_no')">Roll No.</th>
+				<th ng-click="rank.doSort('name')">Student</th>
+				<th ng-click="rank.doSort('cgpi')">CGPI</th>
+				<th>Year Rank</th>
+				<th>College Rank</th>
+			</tr>
+			<tr ng-repeat="student in rank.list | orderBy:rank.sort:rank.reverse">
+				<td ng-click="rank.clickName(student.roll_no)">{{ student.roll_no }}</td>
+				<td ng-click="rank.clickName(student.roll_no)">{{ student.name | uppercase }}</td>
+				<td>{{ student.cgpi }}</td>
+				<td>{{ student.year_rank }}</td>
+				<td>{{ student.college_rank }}</td>
+			</tr>
+		</table>
+		
+	</div>
+
+	
+
+</div>

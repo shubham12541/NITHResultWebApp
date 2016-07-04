@@ -1,0 +1,24 @@
+<div>
+	<h1>{{ result.name }}</h2>
+	<h1>{{ result.roll }}</h2>
+	<form ng-submit="result.update()">
+		<h2>Semester: <input class="input-xs" type="text" ng-value="result.sem" ng-model="result.sem"></h2>
+		<div class="alert alert-danger" ng-if="result.error">
+			{{result.error}}
+		</div>
+	</form>
+	<br>
+	<table class="table table-striped">
+		<tr>
+			<th>Subject</th>
+			<th>Total Credit</th>
+			<th>Obtained Credit</th>
+		</tr>
+		<tr ng-repeat="sem in result.semResult">
+			<td>{{ sem.subject_name }}</td>
+			<td>{{ sem.TotalCR }}</td>
+			<td>{{ sem.ObtainCR }}</td>
+		</tr>
+	</table>
+	
+</div>

@@ -1,0 +1,40 @@
+<div>
+	<br>
+	<form ng-submit="nameCtrl.searchName()">
+		<div ng-class="nameCtrl.class">
+			<!-- <label>Roll No.</label> -->
+			<input type="text" placeholder="Enter Name" class="form-control" ng-model="nameCtrl.name">
+		</div>
+		<div class="alert alert-danger" ng-if="nameCtrl.error">
+			{{nameCtrl.error}}
+		</div>
+		<!-- <button type="submit" class="btn btn-block btn-primary">
+			<span ng-if="!search.processing">Search</span>
+			<span ng-if="search.processing" class="spinner"><span class="glyphicon glyphicon-repeat"></span></span></a>
+		</button>
+ --></form>
+
+ 	<br>
+
+ 	<div ng-if="nameCtrl.result" ng-hide="nameCtrl.error">
+		
+		<table class="table table-striped">
+			<tr>
+				<th ng-click="nameCtrl.doSort('roll_no')">Roll No</th>
+				<th ng-click="nameCtrl.doSort('name')">Name</th>
+				<th ng-click="nameCtrl.doSort('cgpi')">CGPI</th>
+			</tr>
+			<tr ng-repeat="student in nameCtrl.result | orderBy:nameCtrl.sort:nameCtrl.reverse">
+				<td ng-click="nameCtrl.clickStudent(student.roll_no)">{{ student.roll_no }}</td>
+				<td ng-click="nameCtrl.clickStudent(student.roll_no)">{{ student.name | uppercase }}</td>
+				<td ng-click="nameCtrl.clickStudent(student.roll_no)">{{ student.cgpi }}</td>
+			</tr>
+		</table>
+		<br>
+		<br>
+	</div>
+	
+</div>
+
+<br>
+<br>
